@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssm.dao.RecuitDao">
+    <select id="queryAll" resultMap="ClassResultMap">
+    select * from recuit r,department d,position p where r.dept_id=d.id and r.position_id=p.id;
+    </select>
+    <resultMap type="Recuit" id="ClassResultMap">
+    <id property="id" column="id"/>
+    <result property="title" column="title"/>
+    <result property="content" column="content"/>
+    <association property="dept" javaType="Department">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="createTime" column="createTime"/>
+    </association>
+    <association property="position" javaType="Position">
+    <id property="id" column="id"/>
+    <result property="name" column="name"/>
+    <result property="createTime" column="createTime"/>
+    </association>
+    </resultMap>
+</mapper> 
